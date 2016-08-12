@@ -1,8 +1,9 @@
 var express = require('express');  
 var request = require('request');
-var apiServerHost = "http://www.facebook.com:80";
+
 var app = express();  
-app.use('/proxy', function(req, res) {  
+
+app.use('/', function(req, res) {  
   var url = req.url.replace('/?url=','');
   req.pipe(request(url)).pipe(res);
 });
